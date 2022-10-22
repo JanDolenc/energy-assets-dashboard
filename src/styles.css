@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #f9fcff;
+}
+
+.flex {
+  display: flex;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.mr-24 {
+  margin-right: 24px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.asset-group h3 {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.assets-list,
+.graph-wrap h2 {
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.graph-wrap {
+  padding: 16px;
+  width: 70%;
+}
+
+.asset-group {
+  margin-top: 28px;
+}
