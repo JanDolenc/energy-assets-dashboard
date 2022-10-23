@@ -1,7 +1,11 @@
 {
-  "assets-list": [
+  "asset-list": [
     { "id": 1, "title": "PV system one" },
-    { "id": 2, "title": "PV system twoo" }
+    { "id": 2, "title": "PV system two" },
+    { "id": 3, "title": "Wind turbine one" },
+    { "id": 4, "title": "Wind turbine two" },
+    { "id": 5, "title": "Wind turbine three" },
+    { "id": 6, "title": "Battery one" }
   ],
   "measurements": [
     {

@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Asset } from '../Asset';
-import { ASSETLIST } from '../mock-assets';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AssetListService {
-  private apiUrl = 'http://localhost:5000/assets-list';
-
   constructor(private http: HttpClient) {}
 
+  /* GET list of assets */
   getAssetList(): Observable<Asset[]> {
-    return this.http.get<Asset[]>(this.apiUrl);
+    return this.http.get<Asset[]>(`${environment.apiUrl}asset-list`);
   }
 }
