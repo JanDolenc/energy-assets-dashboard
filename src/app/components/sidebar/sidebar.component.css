@@ -1,0 +1,11 @@
+aside {
+  width: 30%;
+  max-width: 540px;
+  height: 100vh;
+  background-color: #acc9e1;
+  padding: 12px 24px;
+}
+
+.selected {
+  background-color: aqua;
+}
