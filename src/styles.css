@@ -26,6 +26,10 @@ body {
   margin-bottom: 8px;
 }
 
+.mb-16 {
+  margin-bottom: 16px;
+}
+
 .asset-group h3 {
   margin: 0;
   margin-bottom: 16px;

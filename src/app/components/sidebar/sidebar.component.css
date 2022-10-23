@@ -6,6 +6,17 @@ aside {
   padding: 12px 24px;
 }
 
+.asset-item {
+  background-color: #dbefff;
+  padding: 16px 24px;
+  margin-bottom: 12px;
+}
+
+.asset-item {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
 .selected {
   background-color: aqua;
 }
