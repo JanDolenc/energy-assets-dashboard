@@ -1,0 +1,43 @@
+<aside class="assets-list">
+  <h2>Assets</h2>
+  <!-- one asset group - pv Sys -->
+  <div class="asset-group">
+    <!-- <h3>PV systems</h3> -->
+    <!-- one item asset -->
+    <!-- <app-item-asset
+      id="11"
+      title="PV system onee"
+      timestamp="1666451454"
+      activePower="569W"
+      voltage="311V"
+      (assetClick)="showGraph()"
+    ></app-item-asset>
+
+    <app-item-asset
+      *ngFor="let asset of assets"
+      [asset]="asset"
+    ></app-item-asset> -->
+
+    <!-- one item asset END -->
+
+    <!-- TEST -->
+    <div
+      *ngFor="let asset of assetList"
+      (click)="onSelect(asset)"
+      [class.selected]="asset === selectedAsset"
+      class="asset-item"
+    >
+      <h3>{{ asset.title }}</h3>
+      <div class="asset-item__data">
+        <div class="flex mb-8">
+          <div class="mr-24">
+            <span class="bold">Asset ID:</span><span> {{ asset.id }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span *ngIf="selectedAsset">
+      {{ selectedAsset.title | uppercase }} Details</span
+    >
+  </div>
+</aside>
