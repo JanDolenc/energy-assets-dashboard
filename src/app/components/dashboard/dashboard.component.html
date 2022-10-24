@@ -1,0 +1,31 @@
+<header>
+  <div>
+    <h1>{{ title }}</h1>
+  </div>
+</header>
+<main>
+  <aside class="assets-list">
+    <h2 class="mb-16">Assets</h2>
+
+    <!-- one asset item in asset list - sidebar -->
+    <div
+      *ngFor="let asset of assetList"
+      (click)="onSelect(asset)"
+      [class.selected]="asset === selectedAsset"
+      class="asset-item"
+    >
+      <h3>{{ asset.title }}</h3>
+      <div class="asset-item__data">
+        <div class="flex mb-8">
+          <div class="mr-24">
+            <span class="bold">Asset ID:</span><span> {{ asset.id }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END asset item -->
+    <span *ngIf="selectedAsset">
+      {{ selectedAsset.title | uppercase }} Chart</span
+    >
+  </aside>
+</main>

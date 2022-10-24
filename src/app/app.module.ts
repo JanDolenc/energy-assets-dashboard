@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ItemAssetComponent } from './components/item-asset/item-asset.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ChartComponent } from './components/chart/chart.component';
     SidebarComponent,
     ItemAssetComponent,
     ChartComponent,
+    DashboardComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [],

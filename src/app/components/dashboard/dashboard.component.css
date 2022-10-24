@@ -1,0 +1,28 @@
+header {
+  background-color: #113858;
+  color: #f9fcff;
+  padding: 24px 32px;
+}
+
+aside {
+  width: 30%;
+  max-width: 540px;
+  height: 100vh;
+  background-color: #acc9e1;
+  padding: 12px 24px;
+}
+
+.asset-item {
+  background-color: #dbefff;
+  padding: 16px 24px;
+  margin-bottom: 12px;
+}
+
+.asset-item {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.selected {
+  background-color: aqua;
+}
