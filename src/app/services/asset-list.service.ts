@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Asset } from '../Asset';
+import { ChartData } from '../ChartData';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,8 +17,8 @@ export class AssetListService {
   }
 
   /* GET data for selected asset */
-  getAssetData(asset: Asset): Observable<Asset[]> {
-    return this.http.get<Asset[]>(
+  getAssetData(asset: Asset): Observable<ChartData> {
+    return this.http.get<ChartData>(
       `${environment.apiUrl}measurements/${asset.id}`
     );
   }
