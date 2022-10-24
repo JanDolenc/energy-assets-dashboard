@@ -14,4 +14,11 @@ export class AssetListService {
   getAssetList(): Observable<Asset[]> {
     return this.http.get<Asset[]>(`${environment.apiUrl}asset-list`);
   }
+
+  /* GET data for selected asset */
+  getAssetData(asset: Asset): Observable<Asset[]> {
+    return this.http.get<Asset[]>(
+      `${environment.apiUrl}measurements/${asset.id}`
+    );
+  }
 }
