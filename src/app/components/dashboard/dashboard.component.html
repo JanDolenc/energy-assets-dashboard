@@ -3,7 +3,7 @@
     <h1>{{ title }}</h1>
   </div>
 </header>
-<main>
+<main class="flex">
   <aside class="assets-list">
     <h2 class="mb-16">Assets</h2>
 
@@ -24,8 +24,8 @@
       </div>
     </div>
     <!-- END asset item -->
-    <span *ngIf="selectedAsset">
-      {{ selectedAsset.title | uppercase }} Chart</span
-    >
   </aside>
+  <div class="flex center">
+    <div class="echart"></div>
+  </div>
 </main>

@@ -8,6 +8,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   background-color: #f9fcff;
+  height: 100vh;
 }
 
 .flex {
