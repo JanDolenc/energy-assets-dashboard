@@ -26,6 +26,11 @@
     <!-- END asset item -->
   </aside>
   <div class="flex center">
-    <div echarts [options]="chartOption" class="echart"></div>
+    <div
+      echarts
+      [options]="chartOption"
+      class="echart"
+      [merge]="mergeOptions"
+    ></div>
   </div>
 </main>

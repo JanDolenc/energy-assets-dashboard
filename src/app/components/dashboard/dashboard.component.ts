@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Asset } from 'src/app/Asset';
 import { ChartData } from 'src/app/ChartData';
 import { AssetListService } from 'src/app/services/asset-list.service';
-import { EChartsOption } from 'echarts';
+import { EChartsOption, number } from 'echarts';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,41 +16,10 @@ export class DashboardComponent implements OnInit {
   chartData?: ChartData;
   selectedAsset?: Asset;
 
-  constructor(private assetListService: AssetListService) {}
-
-  ngOnInit(): void {
-    this.getAssetList();
-  }
-
-  onSelect(asset: Asset): void {
-    this.selectedAsset = asset;
-    /* this.getAssetData(asset) */
-    this.plotChart(asset);
-  }
-
-  getAssetList(): void {
-    this.assetListService
-      .getAssetList()
-      .subscribe((assetList) => (this.assetList = assetList));
-  }
-
-  getAssetData(asset: Asset) {
-    /* console.log(asset); */
-    return this.assetListService
-      .getAssetData(asset)
-      .subscribe((data) => (this.chartData = data));
-  }
-
-  /* CHART */
-  async plotChart(asset: Asset) {
-    this.getAssetData(asset);
-    /* console.log(data); */
-    console.log('aaaa', this.chartData?.data);
-  }
+  mergeOptions = {};
 
   chartOption: EChartsOption = {
     title: {
-      text: 'Chart',
       left: '1%',
     },
     tooltip: {
@@ -62,8 +31,9 @@ export class DashboardComponent implements OnInit {
       bottom: '10%',
     },
     xAxis: {
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      type: 'time',
     },
+
     yAxis: {},
     toolbox: {
       right: 10,
@@ -77,78 +47,79 @@ export class DashboardComponent implements OnInit {
     },
     dataZoom: [
       {
-        startValue: '2014-06-01',
+        startValue: '2022-01-01',
       },
       {
         type: 'inside',
       },
     ],
-    visualMap: {
+    legend: {
       top: 50,
-      right: 10,
-      pieces: [
-        {
-          gt: 0,
-          lte: 50,
-          color: '#93CE07',
-        },
-        {
-          gt: 50,
-          lte: 100,
-          color: '#FBDB0F',
-        },
-        {
-          gt: 100,
-          lte: 150,
-          color: '#FC7D02',
-        },
-        {
-          gt: 150,
-          lte: 200,
-          color: '#FD0100',
-        },
-        {
-          gt: 200,
-          lte: 300,
-          color: '#AA069F',
-        },
-        {
-          gt: 300,
-          color: '#AC3B2A',
-        },
-      ],
-      outOfRange: {
-        color: '#999',
-      },
-    },
-    series: {
-      name: 'Beijing AQI',
-      type: 'line',
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-      markLine: {
-        silent: true,
-        lineStyle: {
-          color: '#333',
-        },
-        data: [
-          {
-            yAxis: 50,
-          },
-          {
-            yAxis: 100,
-          },
-          {
-            yAxis: 150,
-          },
-          {
-            yAxis: 200,
-          },
-          {
-            yAxis: 300,
-          },
-        ],
-      },
+      right: 1,
+      orient: 'vertical',
+      padding: 5,
     },
   };
-  /* CHART END */
+
+  constructor(private assetListService: AssetListService) {}
+
+  ngOnInit(): void {
+    this.getAssetList();
+  }
+
+  onSelect(asset: Asset): void {
+    this.selectedAsset = asset;
+
+    this.assetListService.getAssetData(asset).subscribe((data) => {
+      this.mergeOptions = {
+        title: {
+          text: asset.title,
+        },
+
+        yAxis: [
+          {
+            name: 'Watts',
+
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: ['#0f0f0f'],
+              },
+            },
+          },
+          {
+            name: 'Volts',
+
+            /* splitLine: {
+              show: true,
+              lineStyle: {
+                color: ['#0f0f0f'],
+              },
+            }, */
+          },
+        ],
+
+        series: [
+          {
+            name: 'Active power',
+            type: 'line',
+            data: data.data?.map((item) => [item[0], item[1]]),
+          },
+          {
+            name: 'Voltage',
+            type: 'line',
+            data: data.data?.map((item) => [item[0], item[2]]),
+          },
+        ],
+      };
+    });
+  }
+
+  getAssetList(): void {
+    this.assetListService.getAssetList().subscribe((assetList) => {
+      this.assetList = assetList;
+      this.selectedAsset = assetList[0];
+      this.onSelect(this.selectedAsset);
+    });
+  }
 }
